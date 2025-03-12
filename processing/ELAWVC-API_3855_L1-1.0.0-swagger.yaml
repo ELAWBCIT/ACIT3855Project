@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Translink Skytrain Report API
+  description: 'API for checking skytrain''s behaviours. '
+paths:
+  /stats:
+    get:
+      summary: gets event stats
+      operationId: app.get_stats
+      description: gets wait and maintenance processed stats 
+      responses:
+        '200':
+          description: Successfully returned a list of events
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/ReadingStats'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  message:
+                    type: string
+components:
+  schemas: 
+    ReadingStats:
+      required:
+        - num_sw_readings
+        - max_pg_readings
+        - num_my_readings
+        - max_tr_readings
+      properties:
+        num_sw_readings:
+          type: integer
+          example: 50000
+        max_pg_readings:
+          type: integer
+          example: 200
+        num_my_readings:
+          type: integer
+          example: 50000
+        max_tr_readings:
+          type: integer
+          example: 250
+        

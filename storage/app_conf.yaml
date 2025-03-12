@@ -1,0 +1,11 @@
+version: 1
+events:
+  hostname: kafka
+  port: 9092
+  topic: events
+datastore: 
+  user: user
+  password: loser
+  hostname: storage
+  port: 3306
+  db: trains_database.db

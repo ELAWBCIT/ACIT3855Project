@@ -1,0 +1,10 @@
+version: 1
+datastore:
+  filename: info.json
+scheduler: 
+  interval: 10
+eventstores:
+  station:
+    url: http://storage:8090/rapidtransit/status
+  maintenance:
+    url: http://storage:8090/rapidtransit/maintenance

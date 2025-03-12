@@ -1,0 +1,9 @@
+version: 1
+station: 
+  url: http://storage:8090/rapidtransit/status
+maintenance:
+  url: http://storage:8090/rapidtransit/maintenance
+events:
+  hostname: kafka
+  port: 9092
+  topic: events

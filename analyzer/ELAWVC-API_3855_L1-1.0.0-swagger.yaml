@@ -1,0 +1,143 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Translink Skytrain Report API
+  description: 'API for checking skytrain''s behaviours. '
+paths:
+  /status:
+    get:
+      summary: gets station wait reading from history
+      operationId: app.get_station_wait_reading
+      description: Gets station wait reading from the event store
+      parameters:
+        - name: index
+          in: query
+          description: Gets the station wait at index in event store
+          schema:
+            type: integer
+            example: 100
+      responses:
+        '200': 
+          description: Successfully returned station wait event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/station_wait'
+        '400':
+          description: Invalid request
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  message:
+                    type: string
+  /maintenance:
+    get:
+      summary: gets maintenance yard reading from history
+      operationId: app.get_maintenance_yard_reading
+      description: Gets maintenance yard reading from the event store
+      parameters:
+        - name: index
+          in: query
+          description: Gets the maintenance yard at index in event store
+          schema:
+            type: integer
+            example: 100
+      responses:
+          '200': 
+            description: Successfully returned maintenance yard event
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/maintenance_inventory'
+          '400':
+            description: Invalid request
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+          '404':
+            description: Not Found
+            content:
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    message:
+                      type: string
+  /stats:
+    get: 
+      summary: get the event stats
+      operationId: app.get_event_stats
+      description: gets the stats of the history events
+      responses:
+        '200': 
+          description: Succesfully returned a heart rate event
+          content: 
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/ReadingStats'
+components:
+  schemas:
+    station_wait:
+      type: object
+      title: Station_Wait
+      properties:
+        station_ID:
+          type: string
+          format: uuid
+        line_ID:
+          type: string
+          x-stoplight:
+            id: r0hqucelx2xdd
+        timestamp:
+          type: string
+          x-stoplight:
+            id: sdf7jbdzflq29
+        passenger_amount:
+          type: integer
+          x-stoplight:
+            id: xfb2n20wsqw3z
+    maintenance_inventory:
+      title: maintenance_inventory
+      type: object
+      properties:
+        maintenance_yard_id:
+          type: string
+          format: uuid
+        model:
+          type: string
+          x-stoplight:
+            id: 08kmjmalfsgtt
+        timestamp:
+          type: string
+          x-stoplight:
+            id: mllgp3rsfjwp2
+        train_count:
+          type: integer
+          x-stoplight:
+            id: uidxna1gx1rck
+    ReadingStats:
+      required:
+        - num_station_count
+        - num_maintenance_count
+      properties:
+        num_station_count:
+          type: integer
+          example: 50000
+        num_maintenance_count:
+          type: integer
+          example: 50000

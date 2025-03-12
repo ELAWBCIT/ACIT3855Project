@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Translink Skytrain Report API
+  description: 'API for checking skytrain''s behaviours. '
+paths:
+  /rapidtransit/status:
+    get:
+      tags:
+        - station_wait
+      summary: gets new station wait readings
+      operationId: app.get_wait_time
+      description: gets wait_time readings added after a timestamp 
+      parameters:
+        - name: start_timestamp
+          in: query
+          description: Limits the number of readings returned
+          schema:
+            type: string
+            format: date-time
+            example: 2016-08-29 09:12:45
+        - name: end_timestamp
+          in: query
+          description: Limits the number of readings returned
+          schema: 
+            type: string
+            format: date-time
+            example: 2016-08-29 09:12:45
+      responses:
+        '200':
+          description: Successfully returned a list of wait_time events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/station_wait'
+  /rapidtransit/maintenance:
+    get:
+      tags:
+        - maintenance_inventory
+      summary: gets new maintenance inventory readings
+      operationId: app.get_maintenance_yard
+      description: gets maintenance yard readings added after a timestamp 
+      parameters:
+        - name: start_timestamp
+          in: query
+          description: Limits the number of readings returned
+          schema:
+            type: string
+            format: date-time
+            example: 2016-08-29 09:12:45
+        - name: end_timestamp
+          in: query
+          description: Limits the number of readings returned
+          schema: 
+            type: string
+            format: date-time
+            example: 2016-08-29 09:12:45
+      responses:
+        '200':
+          description: Successfully returned a list of wait_time events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/maintenance_inventory'
+    parameters: []
+components:
+  schemas:
+    station_wait:
+      type: object
+      title: Station_Wait
+      properties:
+        station_ID:
+          type: string
+          format: uuid
+        line_ID:
+          type: string
+          x-stoplight:
+            id: r0hqucelx2xdd
+        timestamp:
+          type: string
+          x-stoplight:
+            id: sdf7jbdzflq29
+        passenger_amount:
+          type: integer
+          x-stoplight:
+            id: xfb2n20wsqw3z
+        trace_id:
+          type: integer
+    maintenance_inventory:
+      title: maintenance_inventory
+      type: object
+      properties:
+        maintenance_yard_id:
+          type: string
+          format: uuid
+        model:
+          type: string
+          x-stoplight:
+            id: 08kmjmalfsgtt
+        timestamp:
+          type: string
+          x-stoplight:
+            id: mllgp3rsfjwp2
+        train_count:
+          type: integer
+          x-stoplight:
+            id: uidxna1gx1rck
+        trace_id:
+          type: integer
