@@ -5,3 +5,4 @@ trains_database.db
 **/__pycache__
 **/app.log
 data 
+.env
