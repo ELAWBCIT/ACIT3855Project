@@ -1,7 +1,0 @@
-version: 1
-scheduler:
-  interval: 5
-kafka:
-  hostname: kafka
-  port: 9092
-  topic: events
