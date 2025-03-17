@@ -4,8 +4,8 @@ events:
   port: 9092
   topic: events
 datastore: 
-  user: user
-  password: loser
+  user: 
+  password: 
   hostname: storage
   port: 3306
   db: trains_database.db
