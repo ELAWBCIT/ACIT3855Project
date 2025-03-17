@@ -58,7 +58,7 @@ from threading import Thread
 
 manager.create_tables()
 
-with open('/app/conf/app_conf.yaml', 'r') as af:
+with open('/app/conf/app_conf_prod.yaml', 'r') as af:
     app_config = yaml.safe_load(af.read())
 
 with open('/app/conf/log_conf.yml', 'r') as lf:

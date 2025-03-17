@@ -48,7 +48,7 @@ import logging
 from pykafka import KafkaClient
 
 # Lab 4 - Loading the app_conf.yml file
-with open('/app/conf/app_conf.yml', 'r') as af:
+with open('/app/conf/app_conf_prod.yml', 'r') as af:
     app_config = yaml.safe_load(af.read())
 
 with open('/app/conf/log_conf.yml', 'r') as lf:

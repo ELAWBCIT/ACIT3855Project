@@ -6,3 +6,4 @@ trains_database.db
 **/app.log
 data/ 
 .env
+config/*_prod.yml

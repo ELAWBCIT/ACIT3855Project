@@ -48,7 +48,7 @@ import logging
 from apscheduler.schedulers.background import BackgroundScheduler
 
 # Still need the different yaml config files for logger and the application. 
-with open('/app/conf/app_conf.yml', 'r') as af:
+with open('/app/conf/app_conf_prod.yml', 'r') as af:
     app_config = yaml.safe_load(af.read())
 
 with open('/app/conf/log_conf.yml', 'r') as lf:
