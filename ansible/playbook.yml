@@ -6,9 +6,7 @@
       ansible.builtin.git:
         repo: git@github.com:ELAWBCIT/ACIT3855Project.git
         dest: /home/azureuser/app/ACIT3855Project
-        single_branch: yes
-        key_file: ~/.ssh/deploy
-      become: no
+        force: true 
     
     - name: Data Directory
       ansible.builtin.file:
