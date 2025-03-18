@@ -54,14 +54,14 @@ from apscheduler.schedulers.background import BackgroundScheduler
 # with open('/app/conf/app_conf_prod.yml', 'r') as af:
 #     app_config = yaml.safe_load(af.read())
 
-if os.path.exists('/app/conf/app_conf_prod.yml'):
-    with open('/app/conf/app_conf_prod.yml', 'r') as af:
+if os.path.exists('../config/processing/app_conf_prod.yml'):
+    with open('../config/processing/app_conf_prod.yml', 'r') as af:
         app_config = yaml.safe_load(af.read())
 else:
-    with open('/app/conf/app_conf_dev.yml', 'r') as af:
+    with open('../config/processing/app_conf_dev.yml', 'r') as af:
         app_config = yaml.safe_load(af.read())
 
-with open('/app/conf/log_conf.yml', 'r') as lf:
+with open('../config/processing/log_conf.yml', 'r') as lf:
     LOG_CONFIG = yaml.safe_load(lf.read())
     logging.config.dictConfig(LOG_CONFIG)
 
