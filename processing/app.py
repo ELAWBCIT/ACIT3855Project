@@ -44,12 +44,22 @@ import uuid
 import yaml 
 import logging
 
+# Just an import used for checking file existence. 
+import os.path
+
 # Lab 5 imports
 from apscheduler.schedulers.background import BackgroundScheduler
 
 # Still need the different yaml config files for logger and the application. 
-with open('/app/conf/app_conf_prod.yml', 'r') as af:
-    app_config = yaml.safe_load(af.read())
+# with open('/app/conf/app_conf_prod.yml', 'r') as af:
+#     app_config = yaml.safe_load(af.read())
+
+if os.path.exists('/app/conf/app_conf_prod.yml'):
+    with open('/app/conf/app_conf_prod.yml', 'r') as af:
+        app_config = yaml.safe_load(af.read())
+else:
+    with open('/app/conf/app_conf_dev.yml', 'r') as af:
+        app_config = yaml.safe_load(af.read())
 
 with open('/app/conf/log_conf.yml', 'r') as lf:
     LOG_CONFIG = yaml.safe_load(lf.read())

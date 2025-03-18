@@ -44,12 +44,21 @@ import uuid
 import yaml 
 import logging
 
+import os.path
+
 # Lab 6 imports
 from pykafka import KafkaClient
 
 # Lab 4 - Loading the app_conf.yml file
-with open('/app/conf/app_conf_prod.yml', 'r') as af:
-    app_config = yaml.safe_load(af.read())
+# with open('/app/conf/app_conf_prod.yml', 'r') as af:
+#     app_config = yaml.safe_load(af.read())
+
+if os.path.exists('/app/conf/app_conf_prod.yml'):
+    with open('/app/conf/app_conf_prod.yml', 'r') as af:
+        app_config = yaml.safe_load(af.read())
+else:
+    with open('/app/conf/app_conf_dev.yml', 'r') as af:
+        app_config = yaml.safe_load(af.read())
 
 with open('/app/conf/log_conf.yml', 'r') as lf:
     LOG_CONFIG = yaml.safe_load(lf.read())
