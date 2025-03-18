@@ -60,9 +60,6 @@ import os.path
 
 manager.create_tables()
 
-# with open('/app/conf/app_conf_prod.yaml', 'r') as af:
-#     app_config = yaml.safe_load(af.read())
-
 if os.path.exists('../config/storage/app_conf_prod.yml'):
     with open('../config/storage/app_conf_prod.yml', 'r') as af:
         app_config = yaml.safe_load(af.read())

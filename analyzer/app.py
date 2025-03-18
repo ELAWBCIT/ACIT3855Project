@@ -49,10 +49,6 @@ import os.path
 # Lab 6 imports
 from pykafka import KafkaClient
 
-# Lab 4 - Loading the app_conf.yml file
-# with open('/app/conf/app_conf_prod.yml', 'r') as af:
-#     app_config = yaml.safe_load(af.read())
-
 if os.path.exists('../config/analyzer/app_conf_prod.yml'):
     with open('../config/analyzer/app_conf_prod.yml', 'r') as af:
         app_config = yaml.safe_load(af.read())
@@ -67,19 +63,11 @@ with open('../config/analyzer/log_conf.yml', 'r') as lf:
 # create logger from basicLogger defined in the configuration file. 
 logger = logging.getLogger('basicLogger')
 
-# Need to import kafkaclient from pykafka
-# The following base is from Tim's code
-# client = KafkaClient(hosts='localhost:9092')
 
 hostname = app_config['kafka']['hostname']
 port = app_config['kafka']['port']
 topic = app_config['kafka']['topic']
 interval = app_config['scheduler']['interval']
-
-# client = KafkaClient(hosts=f"{hostname}:{port}")
-# topic = client.topics[str.encode(f'{topic}')]
-# # producer = topic.get_sync_producer()
-# consumer = topic.get_simple_consumer(reset_offset_on_start=True, consumer_timeout_ms=1000)
 
 
 def get_station_wait_reading(index):

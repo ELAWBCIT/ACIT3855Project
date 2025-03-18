@@ -50,9 +50,6 @@ import os.path
 # Lab 5 imports
 from apscheduler.schedulers.background import BackgroundScheduler
 
-# Still need the different yaml config files for logger and the application. 
-# with open('/app/conf/app_conf_prod.yml', 'r') as af:
-#     app_config = yaml.safe_load(af.read())
 
 if os.path.exists('../config/processing/app_conf_prod.yml'):
     with open('../config/processing/app_conf_prod.yml', 'r') as af:

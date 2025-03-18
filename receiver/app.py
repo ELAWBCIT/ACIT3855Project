@@ -49,10 +49,6 @@ import os.path
 # Lab 6 imports
 from pykafka import KafkaClient
 
-# Lab 4 - Loading the app_conf.yml file
-# with open('/app/conf/app_conf_prod.yml', 'r') as af:
-#     app_config = yaml.safe_load(af.read())
-
 if os.path.exists('../config/receiver/app_conf_prod.yml'):
     with open('../config/receiver/app_conf_prod.yml', 'r') as af:
         app_config = yaml.safe_load(af.read())
@@ -88,14 +84,6 @@ def post_wait_time(body):
     body['trace_id'] = trace_id 
     logger.info(f'Received event status with a trace id of {trace_id}')
 
-    # Use httpx.post to access POST endpoints. 
-    # Storage listens on port 8090
-    # Send event data as the JSON paylod (= in the body) 
-    # For the link you call the path that was specified via your YAML file. 
-    # result = httpx.post("http://localhost:8090/rapidtransit/status", json=body)
-    
-    # result = httpx.post(app_config['events']['station']['url'], json=body)
-
     msg = { 
         "type": "station",
         "datetime": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -127,14 +115,6 @@ def post_maintenance_yard(body):
     body['trace_id'] = trace_id 
     print('Payload: ', body)
     logger.info(f'Received event maintenance with a trace id of {trace_id}')
-
-    # Use httpx.post to access POST endpoints. 
-    # Storage listens on port 8090
-    # Send event data as the JSON paylod (= in the body) 
-    # For the link you call the path that was specified via your YAML file.
-    # result = httpx.post("http://localhost:8090/rapidtransit/maintenance", json=body)
-    
-    # result = httpx.post(app_config['events']['maintenance']['url'], json=body)
 
     msg = { 
         "type": "maintenance",
