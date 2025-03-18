@@ -1,0 +1,70 @@
+- name: Configure directories in VM
+  hosts: deploy
+  become: yes
+  tasks:
+    - name: Git clone my branch
+      ansible.builtin.git:
+        repo: git@github.com:ELAWBCIT/ACIT3855Project.git
+        dest: /home/azureuser/app/ACIT3855Project
+        single_branch: yes
+        key_file: ~/.ssh/deploy
+      become: no
+    
+    - name: Data Directory
+      ansible.builtin.file:
+        path: /home/azureuser/app/ACIT3855Project/data
+        state: directory
+        mode: '0755'
+        owner: nobody
+        group: nogroup
+    
+    - name: Kafka Directory
+      ansible.builtin.file:
+        path: /home/azureuser/app/ACIT3855Project/data/kafka
+        state: directory
+        mode: '0755'
+        owner: nobody
+        group: nogroup
+      
+    - name: MySQL Directory
+      ansible.builtin.file: 
+        path: /home/azureuser/app/ACIT3855Project/data/mysql
+        state: directory
+        mode: '0755'
+        owner: nobody
+        group: nogroup
+    
+    - name: Processing Data Directory
+      ansible.builtin.file:
+        path: /home/azureuser/app/ACIT3855Project/data/processing
+        state: directory
+        mode: '0755'
+        owner: nobody
+        group: nogroup
+    
+    - name: Logs Directory
+      ansible.builtin.file:
+        path: /home/azureuser/app/ACIT3855Project/logs
+        state: directory
+        mode: '0755'
+        owner: nobody
+        group: nogroup
+    
+    - name: Environment file
+      ansible.builtin.copy:
+        src: ../.env
+        dest: /home/azureuser/app/ACIT3855Project/.env
+        owner: nobody
+        group: nogroup
+    
+    - name: Storage Conf
+      ansible.builtin.copy:
+        src: ../config/storage/app_conf_prod.yml
+        dest: /home/azureuser/app/ACIT3855Project/config/storage/app_conf_prod.yml
+        owner: nobody
+        group: nogroup
+    
+    - name: Run Containers
+      shell: 
+        cmd: "docker compose up -d"
+        chdir: /home/azureuser/app/ACIT3855Project/
