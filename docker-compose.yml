@@ -70,6 +70,6 @@ services:
     env_file:
       - .env
     volumes:
-      - C:\Users\xsrpr\Desktop\BCIT\ACIT3855\3855-L4\data\database:/var/lib/mysql
+      - ./data/database:/var/lib/mysql
 volumes:
   my-db:
