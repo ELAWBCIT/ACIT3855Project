@@ -49,14 +49,14 @@ import os.path
 # Lab 6 imports
 from pykafka import KafkaClient
 
-if os.path.exists('/conf/app_conf_prod.yml'):
-    with open('/conf/app_conf_prod.yml', 'r') as af:
+if os.path.exists('app/conf/app_conf_prod.yml'):
+    with open('app/conf/app_conf_prod.yml', 'r') as af:
         app_config = yaml.safe_load(af.read())
 else:
-    with open('/conf/analyzer/app_conf_dev.yml', 'r') as af:
+    with open('app/conf/analyzer/app_conf_dev.yml', 'r') as af:
         app_config = yaml.safe_load(af.read())
 
-with open('/conf/analyzer/log_conf.yml', 'r') as lf:
+with open('app/conf/analyzer/log_conf.yml', 'r') as lf:
     LOG_CONFIG = yaml.safe_load(lf.read())
     logging.config.dictConfig(LOG_CONFIG)
 
