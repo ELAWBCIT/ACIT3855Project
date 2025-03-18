@@ -8,8 +8,8 @@ services:
     ports: 
       - "8080:8080"
     volumes:
-      - ${PWD}/config/receiver:/app/conf
-      - ${PWD}/logs:/app/logs
+      - ./config/receiver:/app/conf
+      - ./logs:/app/logs
   storage:
     build:
       context: storage
@@ -18,8 +18,8 @@ services:
       - kafka
       - db
     volumes: 
-      - ${PWD}/config/storage:/app/conf
-      - ${PWD}/logs:/app/logs
+      - ./config/storage:/app/conf
+      - ./logs:/app/logs
   processing:
     build:
       context: processing
@@ -29,9 +29,9 @@ services:
     ports:
       - "8100:8100"
     volumes: 
-      - ${PWD}/config/processing:/app/conf
-      - ${PWD}/logs:/app/logs
-      - ${PWD}/data/processing:/app/stats
+      - ./config/processing:/app/conf
+      - ./logs:/app/logs
+      - ./data/processing:/app/stats
   analyzer:
     build: 
       context: analyzer 
@@ -41,8 +41,8 @@ services:
     ports:
       - "8101:8101"
     volumes:
-      - ${PWD}/config/analyzer:/app/conf
-      - ${PWD}/logs:/app/logs
+      - ./config/analyzer:/app/conf
+      - ./logs:/app/logs
   zookeeper:
     image: wurstmeister/zookeeper
     hostname: zookeeper
@@ -61,7 +61,7 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     volumes:
-      - ${PWD}/data/kafka/kafka-logs:/kafka/kafka-logs
+      - ./data/kafka/kafka-logs:/kafka/kafka-logs
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - "zookeeper"
@@ -70,6 +70,6 @@ services:
     env_file:
       - .env
     volumes:
-      - ${PWD}/data/database:/var/lib/mysql
+      - ./data/database:/var/lib/mysql
 volumes:
   my-db:
