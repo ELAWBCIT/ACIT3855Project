@@ -1,0 +1,7 @@
+FROM nginx  
+
+COPY . /usr/share/nginx.html 
+
+EXPOSE 8117
+
+CMD ["nginx", "-g", "daemon off;"]
