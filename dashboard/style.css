@@ -1,5 +1,6 @@
 body {
-    background-color:aliceblue;
+    background-image: url('bg.jpg');
+    background-color:rgb(167, 230, 238);
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
