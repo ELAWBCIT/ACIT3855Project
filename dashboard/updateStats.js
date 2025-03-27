@@ -31,7 +31,7 @@ const getStats = () => {
                 `Number of Station Wait: ${result.num_sw_readings}\n` + 
                 `Last Updated: ${result.last_updated}\n` +
                 `Maximum Trains: ${result.max_tr_readings}\n` +
-                `Number of Maintenance Inventory: ${result.num_my_readings}` + 
+                `Number of Maintenance Inventory: ${result.num_my_readings}\n` + 
                 `Last Updated: ${result.last_updated}\n`;
 
         document.getElementById("processing-stats").innerText = output; 
