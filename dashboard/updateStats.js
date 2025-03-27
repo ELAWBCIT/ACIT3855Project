@@ -29,7 +29,7 @@ const getStats = () => {
     makeReq(PROCESSING_STATS_API_URL, (result) => {
         const output = `Maximum Passengers: ${result.max_pg_readings}\n` + 
                 `Number of Station Wait: ${result.num_sw_readings}\n` + 
-                `Last Updated: ${result.last_updated}\n` +
+                `Last Updated: ${result.last_updated}\n\n` +
                 `Maximum Trains: ${result.max_tr_readings}\n` +
                 `Number of Maintenance Inventory: ${result.num_my_readings}\n` + 
                 `Last Updated: ${result.last_updated}\n`;
