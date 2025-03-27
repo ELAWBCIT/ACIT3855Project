@@ -32,6 +32,8 @@ code {
 #statistics > div, #analyzer > div {
     border: 1px solid grey;
     padding: 1em;
+    display: flex;
+    flex-direction: column;
 }
 
 #message {
