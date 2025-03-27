@@ -51,8 +51,27 @@ const getStats = () => {
     const stationWaitURL = `${ANALYZER_API_URL.station}?index=${randomIndex}`;
     const maintenanceInventoryURL = `${ANALYZER_API_URL.maintenance}?index=${randomIndex}`;
 
-    makeReq(stationWaitURL, (result) => updateCodeDiv(result, "event-station"));
-    makeReq(maintenanceInventoryURL, (result) => updateCodeDiv(result, "event-maintenance"));
+    makeReq(stationWaitURL, (result) => {
+        const output = `Line ID: ${result.line_ID}\n` +
+                `Passenger Count: ${result.passenger_amount}\n` +
+                `Station ID: ${result.station_ID}\n` + 
+                `Timestamp: ${result.timestamp}\n` +
+                `Trace ID: ${result.trace_id}\n`;
+
+        document.getElementById("event-station").innerText = output;
+    });
+        // updateCodeDiv(result, "event-station"));
+    makeReq(maintenanceInventoryURL, (result) => {
+        const output = `Maintenace Yard ID: ${result.maintenance_yard_id}\n` +
+                `Train Model: ${result.model}\n` +
+                `Train Count: ${result.train_count}\n` + 
+                `Timestamp: ${result.timestamp}\n` +
+                `Trace ID: ${result.trace_id}\n`;
+
+        document.getElementById("event-maintenance").innerText = output;
+    });
+        
+        // updateCodeDiv(result, "event-maintenance"));
 }
 
 const updateErrorMessages = (message) => {
