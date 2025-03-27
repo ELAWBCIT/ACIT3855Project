@@ -48,8 +48,8 @@ const getStats = () => {
     // makeReq(ANALYZER_API_URL.maintenance, (result) => updateCodeDiv(result, "event-maintenance"))
 
     const randomIndex = Math.floor(Math.random() * 25);
-    const stationWaitURL = `${ANALYZER_API_URL.container}?index=${randomIndex}`;
-    const maintenanceInventoryURL = `${ANALYZER_API_URL.ship}?index=${randomIndex}`;
+    const stationWaitURL = `${ANALYZER_API_URL.station}?index=${randomIndex}`;
+    const maintenanceInventoryURL = `${ANALYZER_API_URL.maintenance}?index=${randomIndex}`;
 
     makeReq(stationWaitURL, (result) => updateCodeDiv(result, "event-station"));
     makeReq(maintenanceInventoryURL, (result) => updateCodeDiv(result, "event-maintenance"));
