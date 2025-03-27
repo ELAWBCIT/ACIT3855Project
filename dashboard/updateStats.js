@@ -39,8 +39,8 @@ const getStats = () => {
 
 
     makeReq(ANALYZER_API_URL.stats, (result) => {
-        const output = `Station Wait Events: ${result.num_sw_readings}`
-                    `Maintenance Inventory Events: ${result.num_my_readings}`
+        const output = `Station Wait Events: ${result.num_station_count}`
+                    `Maintenance Inventory Events: ${result.num_maintenance_count}`
 
         document.getElementById("analyzer-stats").innerText = output; 
     });
