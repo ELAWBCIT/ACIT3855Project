@@ -49,7 +49,7 @@ import uuid
 import manager 
 
 # Necessary imports - Lab 5
-from sqlalchemy import select 
+from sqlalchemy import select, func
 
 # Lab 6 imports
 from pykafka import KafkaClient

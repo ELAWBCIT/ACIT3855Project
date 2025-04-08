@@ -29,7 +29,13 @@ class StationStatus(Base):
         station_dict['trace_id'] = self.trace_id 
 
         return station_dict
-
+    
+    def to_id(self):
+        station_dict = {}
+        station_dict['station_id'] = self.station_id
+        station_dict['trace_id'] = self.trace_id 
+        station_dict['event_type'] = "Station Status"
+        
 
 class MaintenanceStatus(Base):
     __tablename__ = "maintenance_inventory"
@@ -54,3 +60,9 @@ class MaintenanceStatus(Base):
         maintenance_dict['trace_id'] = self.trace_id 
 
         return maintenance_dict
+
+    def to_id(self):
+        maintenance_dict = {}
+        maintenance_dict['maintenance_yard_id'] = self.maintenance_yard_id
+        maintenance_dict['trace_id'] = self.trace_id 
+        maintenance_dict['event_type'] = "Maintenance Status"
