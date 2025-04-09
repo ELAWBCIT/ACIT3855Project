@@ -5,8 +5,6 @@ services:
       dockerfile: Dockerfile 
     depends_on:
       - kafka
-    ports: 
-      - "8080:8080"
     volumes:
       - ./config/receiver:/app/conf
       - ./logs:/app/logs
@@ -30,8 +28,6 @@ services:
       CORS_ALLOW_ALL: no
     depends_on:
       - storage 
-    ports:
-      - "8100:8100"
     volumes: 
       - ./config/processing:/app/conf
       - ./logs:/app/logs
@@ -42,8 +38,6 @@ services:
       dockerfile: Dockerfile 
     depends_on:
       - kafka
-    ports:
-      - "8101:8101"
     volumes:
       - ./config/analyzer:/app/conf
       - ./logs:/app/logs
