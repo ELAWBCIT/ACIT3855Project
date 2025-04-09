@@ -54,6 +54,8 @@ services:
       - storage
     ports:
       - "80:80"
+    volumes: 
+      - ./nginx:/etc/nginx/conf.d
   zookeeper:
     image: wurstmeister/zookeeper
     hostname: zookeeper
