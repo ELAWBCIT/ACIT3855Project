@@ -5,6 +5,6 @@ scheduler:
   interval: 10
 eventstores:
   station:
-    url: http://storage:8090/rapidtransit/status
+    url: http://storage:8090/storage/rapidtransit/status
   maintenance:
-    url: http://storage:8090/rapidtransit/maintenance
+    url: http://storage:8090/storage/rapidtransit/maintenance

@@ -215,7 +215,7 @@ def setup_kafka_thread():
 
 app = connexion.FlaskApp(__name__, specification_dir='')
 # Enable validations on the request and response of your API. 
-app.add_api("ELAWVC-API_3855_L1-1.0.0-swagger.yaml", strict_validation=True, validate_responses=True)
+app.add_api("ELAWVC-API_3855_L1-1.0.0-swagger.yaml", base_path="/storage", strict_validation=True, validate_responses=True)
 
 if __name__ == "__main__":
     # receiver service port = 8080.
@@ -223,5 +223,4 @@ if __name__ == "__main__":
     # storage service uses different port than receiver service. Should be 8090. 
     setup_kafka_thread()
     app.run(port=8090, host="0.0.0.0")
-    
     

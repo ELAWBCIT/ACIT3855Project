@@ -1,10 +1,10 @@
 /* UPDATE THESE VALUES TO MATCH YOUR SETUP */
 
-const PROCESSING_STATS_API_URL = "http://elaw24skytrain.canadacentral.cloudapp.azure.com:8100/stats"
+const PROCESSING_STATS_API_URL = "/processing/stats"
 const ANALYZER_API_URL = {
-    stats: "http://elaw24skytrain.canadacentral.cloudapp.azure.com:8101/stats",
-    station: "http://elaw24skytrain.canadacentral.cloudapp.azure.com:8101/status",
-    maintenance: "http://elaw24skytrain.canadacentral.cloudapp.azure.com:8101/maintenance"
+    stats: "/analyzer/stats",
+    station: "/analyzer/status",
+    maintenance: "/analyzer/maintenance"
 }
 
 // This function fetches and updates the general statistics

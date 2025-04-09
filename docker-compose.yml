@@ -14,6 +14,8 @@ services:
     build:
       context: storage
       dockerfile: Dockerfile 
+    environment:
+      CORS_ALLOW_ALL: no
     depends_on:
       - kafka
       - db
@@ -24,6 +26,8 @@ services:
     build:
       context: processing
       dockerfile: Dockerfile 
+    environment:
+      CORS_ALLOW_ALL: no
     depends_on:
       - storage 
     ports:

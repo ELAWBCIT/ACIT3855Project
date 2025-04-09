@@ -50,6 +50,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from connexion.middleware import MiddlewarePosition
 from starlette.middleware.cors import CORSMiddleware
 
+import os 
+
 # Still need the different yaml config files for logger and the application. 
 with open('/app/conf/app_conf.yml', 'r') as af:
     app_config = yaml.safe_load(af.read())
@@ -167,16 +169,17 @@ def init_scheduler():
 
 app = connexion.FlaskApp(__name__, specification_dir='')
 # Enable validations on the request and response of your API. 
-app.add_api("ELAWVC-API_3855_L1-1.0.0-swagger.yaml", strict_validation=True, validate_responses=True)
+app.add_api("ELAWVC-API_3855_L1-1.0.0-swagger.yaml", base_path="/processing", strict_validation=True, validate_responses=True)
 
-app.add_middleware(
-    CORSMiddleware,
-    position=MiddlewarePosition.BEFORE_EXCEPTION,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"], 
-    allow_headers=["*"]
-)
+if "CORS_ALLOW_ALL" in os.environ and os.environ["CORS_ALLOW_ALL"] == "yes":
+    app.add_middleware(
+        CORSMiddleware,
+        position=MiddlewarePosition.BEFORE_EXCEPTION,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"], 
+        allow_headers=["*"]
+    )
 
 if __name__ == "__main__":
     init_scheduler()
