@@ -43,6 +43,15 @@ services:
     volumes:
       - ./config/analyzer:/app/conf
       - ./logs:/app/logs
+  anomaly_detector:
+    build:
+      context: anomaly_detector
+      dockerfile: Dockerfile
+    depends_on: 
+      - kafka
+    volumes:
+      - ./config/anomaly:/app/conf
+      - ./logs:app/logs
   dashboard:
     build:
       context: dashboard
