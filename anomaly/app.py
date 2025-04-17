@@ -150,20 +150,20 @@ def get_anomalies(event_type=None):
 
         item = data['payload']
 
-        if data['type'] != 'maintenance' or 'station':
+        if event_type != 'maintenance' or 'station':
             return 400
         
     # If event type is not provided, show all anomalies
-        elif data['type'] == None:
+        elif event_type == None:
             return file, 200 
 
     # If no anomalies, return 204
-        elif data['type'] == None:
+        elif event_type == None:
             if file == None:
                 return 204
             
     # If no file, return a 404. 
-        elif data['type'] == None:
+        elif event_type == None:
             if file == FileNotFoundError:
                 return 404
 
